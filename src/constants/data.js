@@ -12,7 +12,7 @@ export const personalInfo = {
   subtitle: 'Backend & Full-Stack Developer',
   // Use environment variables for privacy - fallback to placeholders
   email: import.meta.env.VITE_CONTACT_EMAIL || 'your.email@example.com',
-  phone: import.meta.env.VITE_CONTACT_PHONE || '+1 (123) 456-7890'
+  // phone: import.meta.env.VITE_CONTACT_PHONE || '+1 (123) 456-7890'
 };
 
 export const aboutText = {

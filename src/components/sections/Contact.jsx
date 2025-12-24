@@ -80,10 +80,10 @@ const ContactInfo = () => {
         <span className="icon">📧</span>
         <span>{personalInfo.email}</span>
       </div>
-      <div className="contact-item">
+      {/* <div className="contact-item">
         <span className="icon">📱</span>
         <span>{personalInfo.phone}</span>
-      </div>
+      </div> */}
       <div className="social-links">
         {socialLinks.map((link) => (
           <a key={link.id} href={link.url} className="social-link">
