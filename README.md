@@ -1,6 +1,10 @@
 # Kanishka's Portfolio
 
-A modern, responsive portfolio website built with React, showcasing backend engineering expertise and projects.
+A modern, responsive portfolio website built with React, showcasing software engineering expertise, work experience, and projects.
+
+## 👨‍💻 About
+
+Software Engineer at Adobe with 2+ years of experience in backend development, full-stack applications, and AI solutions. Specialized in Java, Spring Boot, Node.js, React.js, AWS, and Agentic AI frameworks.
 
 ## 🚀 Tech Stack
 
@@ -88,16 +92,52 @@ npm run preview
 - **Form Validation** - Client-side validation for contact form
 - **Modular Components** - Easy to maintain and extend
 - **Modern UI** - Clean, professional design with gradients and animations
+- **GitHub Integration** - Automatically fetches and displays your real GitHub projects
+  - Shows project descriptions, languages, stars, and forks
+  - Filters out forks and the portfolio repo itself
+  - Falls back to static projects if API fails
+- **Work Experience Timeline** - Professional experience section with details
+- **Education Section** - Academic background and qualifications
+- **Skills Showcase** - Real tech stack and expertise areas
+- **Privacy Protected** - Contact information secured with environment variables
 
 ## 📝 Customization
 
 ### Update Personal Information
+
+**⚠️ PRIVACY IMPORTANT:** Never commit your real email or phone number directly to the repository!
+
+#### For Contact Information (Email & Phone):
+
+1. **Copy the example file:**
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit `.env` file** with your real information:
+   ```env
+   VITE_CONTACT_EMAIL=your.real.email@example.com
+   VITE_CONTACT_PHONE=+1 (555) 123-4567
+   ```
+
+3. **The `.env` file is already in `.gitignore`** - it will never be committed to git!
+
+4. **For production deployment**, set these environment variables in your hosting platform (Vercel, Netlify, etc.)
+
+#### For Other Information:
 Edit `src/constants/data.js` to update:
-- Personal info (name, title, email, phone)
+- Name and title (safe to commit)
 - About section text
 - Skills
-- Projects
 - Social links
+
+### GitHub Projects Integration
+Projects are automatically fetched from your GitHub account! To customize:
+
+1. **Change GitHub Username**: Edit `GITHUB_USERNAME` in `src/utils/githubApi.js`
+2. **Filter Projects**: Modify the filter logic in `fetchGitHubRepos()` function
+3. **Number of Projects**: Change `.slice(0, 6)` to show more/fewer projects
+4. **Fallback Projects**: Edit `projects` array in `src/constants/data.js` (used if GitHub API fails)
 
 ### Modify Styling
 Edit `src/styles/style.css` to customize:
@@ -154,7 +194,27 @@ This project can be deployed to:
 - GitHub Pages
 - Any static hosting service
 
-Simply run `npm run build` and deploy the `dist/` folder.
+### Deployment Steps:
+
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
+
+2. **Set Environment Variables** in your hosting platform:
+   - `VITE_CONTACT_EMAIL` - Your email address
+   - `VITE_CONTACT_PHONE` - Your phone number
+
+3. **Deploy the `dist/` folder**
+
+### Environment Variables for Production:
+
+When deploying, make sure to set these environment variables in your hosting platform's dashboard:
+- **Vercel**: Settings → Environment Variables
+- **Netlify**: Site settings → Environment variables
+- **GitHub Pages**: Use GitHub Actions secrets
+
+**Remember:** Never commit `.env` files - they're already in `.gitignore`!
 
 ## 📄 License
 

@@ -14,6 +14,9 @@ const Hero = () => {
           Hi, I'm <span className="highlight">{personalInfo.name}</span>
         </h1>
         <p className="hero-subtitle">{personalInfo.title}</p>
+        {personalInfo.subtitle && (
+          <p className="hero-tagline">{personalInfo.subtitle}</p>
+        )}
         <div className="hero-buttons">
           <Button href="#projects" variant="primary">
             View My Work

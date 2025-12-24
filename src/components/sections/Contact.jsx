@@ -33,21 +33,21 @@ const Contact = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
     const validation = validateContactForm(formData);
     
     if (!validation.isValid) {
+      e.preventDefault();
       setErrors(validation.errors);
       return;
     }
 
-    // Success - show message and reset form
-    alert(`Thank you ${formData.name}! Your message has been received. I'll get back to you soon!`);
-    setFormData({ name: '', email: '', message: '' });
-    setErrors({});
+    // If validation passes, form will submit to FormSpree
+    // FormSpree will handle the redirect/thank you page
   };
 
+  // Get FormSpree ID from environment variable
+  const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
+  
   return (
     <section id="contact" className="contact">
       <Container>
@@ -59,6 +59,7 @@ const Contact = () => {
             errors={errors}
             onInputChange={handleInputChange}
             onSubmit={handleSubmit}
+            formspreeId={FORMSPREE_ID}
           />
         </div>
       </Container>
@@ -97,10 +98,27 @@ const ContactInfo = () => {
 /**
  * Contact Form Component
  * Single Responsibility: Render and handle form inputs
+ * Uses FormSpree for email delivery
  */
-const ContactForm = ({ formData, errors, onInputChange, onSubmit }) => {
+const ContactForm = ({ formData, errors, onInputChange, onSubmit, formspreeId }) => {
+  // Use FormSpree if ID is provided, otherwise use mailto fallback
+  const formAction = formspreeId 
+    ? `https://formspree.io/f/${formspreeId}`
+    : null;
+  
+  const handleFormSubmit = (e) => {
+    onSubmit(e);
+    // If validation fails, form won't submit due to e.preventDefault() in onSubmit
+    // If validation passes, form will submit to FormSpree
+  };
+
   return (
-    <form className="contact-form" onSubmit={onSubmit}>
+    <form 
+      className="contact-form" 
+      onSubmit={handleFormSubmit}
+      action={formAction}
+      method="POST"
+    >
       <input 
         type="text"
         name="name"
@@ -130,6 +148,12 @@ const ContactForm = ({ formData, errors, onInputChange, onSubmit }) => {
         className={errors.message ? 'error' : ''}
       />
       {errors.message && <span className="error-message">{errors.message}</span>}
+      
+      {!formspreeId && (
+        <p className="form-note">
+          Note: This will open your email client. To enable direct form submission, set up FormSpree.
+        </p>
+      )}
       
       <Button type="submit" variant="primary">
         Send Message

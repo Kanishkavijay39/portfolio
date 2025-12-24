@@ -1,47 +1,68 @@
 /**
  * Portfolio data constants
  * Centralized data for easy maintenance
+ * 
+ * IMPORTANT: Sensitive data (email, phone) comes from environment variables
+ * to protect privacy. Never commit real contact info to the repository.
  */
 
 export const personalInfo = {
   name: 'Kanishka',
-  title: 'Backend Engineer | Problem Solver',
-  email: 'your.email@example.com',
-  phone: '+1 (123) 456-7890'
+  title: 'Software Engineer @ Adobe',
+  subtitle: 'Backend & Full-Stack Developer',
+  // Use environment variables for privacy - fallback to placeholders
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'your.email@example.com',
+  phone: import.meta.env.VITE_CONTACT_PHONE || '+1 (123) 456-7890'
 };
 
 export const aboutText = {
-  intro: "I'm a passionate backend engineer with a focus on building scalable, efficient, and robust server-side applications. With expertise in backend technologies, I create powerful APIs and systems that power modern applications.",
-  description: "My journey in backend development started with curiosity and has evolved into a career I'm truly passionate about. I specialize in architecting solutions, optimizing performance, and implementing best practices for maintainable code."
+  intro: "I'm a Software Engineer at Adobe as MTS-II working as full-stack developer. I work with Node.js, React.js, AWS, and cutting-edge AI technologies including Agentic AI and Crew AI.",
+  description: "I specialize in creating robust APIs, microservices, and data-driven applications using technologies like MongoDB, PostgreSQL, Redis, Elasticsearch, and Kafka. Previously worked at OYO, building high-performance distributed systems. I hold a Master's degree in Computer Applications."
 };
 
 export const skills = [
   {
     id: 1,
-    icon: '⚙️',
+    icon: '☕',
     title: 'Backend',
-    description: 'Node.js, Express, Python, Django, Flask'
+    description: 'Java, Spring Boot, Node.js, Python, Ruby, REST APIs'
   },
   {
     id: 2,
     icon: '🗄️',
-    title: 'Database',
-    description: 'MongoDB, MySQL, PostgreSQL, Redis'
+    title: 'Databases',
+    description: 'MongoDB, PostgreSQL, Redis, Elasticsearch, SQL'
   },
   {
     id: 3,
-    icon: '🔌',
-    title: 'APIs & Services',
-    description: 'REST, GraphQL, Microservices, WebSockets'
+    icon: '⚛️',
+    title: 'Frontend & Full-Stack',
+    description: 'React.js, JavaScript, HTML/CSS'
   },
   {
     id: 4,
-    icon: '🛠️',
-    title: 'DevOps & Tools',
-    description: 'Git, Docker, AWS, CI/CD, Kubernetes'
+    icon: '🔧',
+    title: 'Message Queues & Streaming',
+    description: 'Kafka, Apache Thrift'
+  },
+  {
+    id: 5,
+    icon: '☁️',
+    title: 'Cloud & DevOps',
+    description: 'AWS, Docker, Git, GitHub'
+  },
+  {
+    id: 6,
+    icon: '🤖',
+    title: 'AI & Emerging Tech',
+    description: 'Agentic AI, Crew AI, Progress 4GL'
   }
 ];
 
+/**
+ * Fallback projects (used if GitHub API fails or no repos found)
+ * Real projects are fetched dynamically from GitHub API
+ */
 export const projects = [
   {
     id: 1,
@@ -78,8 +99,7 @@ export const navLinks = [
 ];
 
 export const socialLinks = [
-  { id: 1, label: 'GitHub', url: '#' },
-  { id: 2, label: 'LinkedIn', url: 'https://www.linkedin.com/in/kanishka-b29841185/' },
-  { id: 3, label: 'Twitter', url: '#' }
+  { id: 1, label: 'GitHub', url: 'https://github.com/Kanishkavijay39' },
+  { id: 2, label: 'LinkedIn', url: 'https://www.linkedin.com/in/kanishka-b29841185/' }
 ];
 
