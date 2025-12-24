@@ -31,7 +31,7 @@ export const skills = [
     id: 2,
     icon: '🗄️',
     title: 'Databases',
-    description: 'MongoDB, PostgreSQL, Redis, Elasticsearch, SQL'
+    description: 'MongoDB, PostgreSQL, Redis, Elasticsearch, DynamoDB, SQL'
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const skills = [
     id: 4,
     icon: '🔧',
     title: 'Message Queues & Streaming',
-    description: 'Kafka, Apache Thrift'
+    description: 'Kafka, SQS, Apache Thrift'
   },
   {
     id: 5,
@@ -55,7 +55,7 @@ export const skills = [
     id: 6,
     icon: '🤖',
     title: 'AI & Emerging Tech',
-    description: 'Agentic AI, Crew AI, Progress 4GL'
+    description: 'Agentic AI, Crew AI'
   }
 ];
 
